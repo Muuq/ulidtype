@@ -1,7 +1,5 @@
 <?php
 
-use Cake\Database\Type;
-use Cake\Core\Plugin;
-use mitakeck\UlidTypes\Database\Type\UlidType;
+use Cake\Database\TypeFactory;
 
-Type::map('ulid', 'mitakeck\UlidTypes\Database\Type\UlidType');
+TypeFactory::map('ulid', 'qumuinc\UlidTypes\Database\Type\UlidType');

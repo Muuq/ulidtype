@@ -5,7 +5,7 @@
 ### Install
 
 ```bash
-$ composer require mitakeck/ulidtypes
+$ composer require qumuinc/ulidtypes
 ```
 
 ### Bootstrap
@@ -14,7 +14,7 @@ $ composer require mitakeck/ulidtypes
 
 ```php
 ...
-Plugin::load('mitakeck/UlidTypes', ['bootstrap' => true]);
+Plugin::load('qumuinc/UlidTypes', ['bootstrap' => true]);
 ...
 ```
 
@@ -24,11 +24,11 @@ Plugin::load('mitakeck/UlidTypes', ['bootstrap' => true]);
 
 ```php
 ...
-use Cake\Database\Schema\TableSchema;
+use Cake\Database\Schema\TableSchemaInterface;
 ...
 class XXXXXXXXTable extends Table
 {
-    protected function _initializeSchema(TableSchema $table)
+    protected function _initializeSchema(TableSchemaInterface $table): TableSchemaInterface
     {
         parent::_initializeSchema($table);
         $table->setColumnType('id', 'ulid'); // set ulid type for id
