@@ -38,3 +38,38 @@ class XXXXXXXXTable extends Table
 }
 ...
 ```
+
+Or, you can use a trait.
+
+```php
+...
+use PrefixUlidType\PrefixUlidTypeTrait;
+...
+class XXXXXXXXTable extends Table
+{
+    use PrefixUlidTypeTrait;
+}
+...
+```
+
+If you want to use `_initializeSchema` function in your model, you need to call the `_traitInitSchema` function.
+
+```php
+...
+use Cake\Database\Schema\TableSchemaInterface;
+use PrefixUlidType\PrefixUlidTypeTrait;
+...
+class XXXXXXXXTable extends Table
+{
+    use PrefixUlidTypeTrait;
+
+    protected function _initializeSchema(TableSchemaInterface $table): TableSchemaInterface
+    {
+        parent::_traitInitSchema($table);
+        $table->setColumnType('code', 'char'); // set any type for property
+
+        return $table;
+    }
+}
+...
+```

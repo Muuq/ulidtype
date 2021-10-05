@@ -1,8 +1,8 @@
 <?php
 
-namespace mitakeck\UlidTypes\Database\Type;
+namespace qumuinc\UlidTypes\Database\Type;
 
-use Cake\Database\Driver;
+use Cake\Database\DriverInterface;
 use Cake\Database\Type\StringType;
 use Ulid\Ulid;
 
@@ -15,10 +15,10 @@ class UlidType extends StringType
      * Casts given value from a PHP type to one acceptable by database
      *
      * @param mixed $value value to be converted to database equivalent
-     * @param \Cake\Database\Driver $driver object from which database preferences and configuration will be extracted
+     * @param \Cake\Database\DriverInterface $driver object from which database preferences and configuration will be extracted
      * @return string|null
      */
-    public function toDatabase($value, Driver $driver)
+    public function toDatabase($value, DriverInterface $driver): ?string
     {
         if ($value === null || $value === '') {
             return null;
@@ -42,7 +42,7 @@ class UlidType extends StringType
      * @param mixed $value The value to convert.
      * @return string|null Converted value.
      */
-    public function marshal($value)
+    public function marshal($value): ?string
     {
         if ($value === null || $value === '' || is_array($value)) {
             return null;
